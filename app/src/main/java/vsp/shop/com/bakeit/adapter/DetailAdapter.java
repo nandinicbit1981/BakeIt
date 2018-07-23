@@ -2,7 +2,6 @@ package vsp.shop.com.bakeit.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import vsp.shop.com.bakeit.R;
 import vsp.shop.com.bakeit.model.Ingredient;
 import vsp.shop.com.bakeit.model.Step;
 import vsp.shop.com.bakeit.ui.IngredientActivity;
+import vsp.shop.com.bakeit.ui.StepsActivity;
 import vsp.shop.com.bakeit.util.Constant;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailViewHolder>{
@@ -46,7 +46,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DetailViewHolder detailViewHolder, int i) {
+    public void onBindViewHolder(@NonNull DetailViewHolder detailViewHolder, final int i) {
         if(detailViewHolder.getItemViewType() == 0 && i == 0) {
             detailViewHolder.stepDetail.setText(Constant.INGREDIENTS);
             detailViewHolder.stepDetail.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +62,8 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             detailViewHolder.stepDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, IngredientActivity.class);
-                    intent.putExtra(Constant.STEPS, (Parcelable) steps);
+                    Intent intent = new Intent(context, StepsActivity.class);
+                    intent.putExtra(Constant.STEP, steps.get(i));
                     context.startActivity(intent);
                 }
             });
