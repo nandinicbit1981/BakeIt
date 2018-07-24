@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_height="wrap_content"
+    android:id="@+id/detail_item_layout"
+
     android:layout_width="match_parent"
+    android:layout_gravity="center"
     android:layout_margin="5dp"
-    android:background="@android:color/white"
+    android:background="@drawable/recipe_border"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <LinearLayout android:layout_height="wrap_content"
+
+    <TextView
+        android:id="@+id/detail_item"
         android:padding="20dp"
         android:gravity="center"
-        android:background="@drawable/recipe_border"
         android:layout_width="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android" >
-        <TextView
-            android:id="@+id/detail_item"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:layout_height="match_parent" />
+
 </LinearLayout>

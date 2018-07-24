@@ -1,7 +1,6 @@
 package vsp.shop.com.bakeit.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,25 +8,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import vsp.shop.com.bakeit.R;
 import vsp.shop.com.bakeit.model.Ingredient;
 import vsp.shop.com.bakeit.model.Step;
-import vsp.shop.com.bakeit.ui.IngredientActivity;
-import vsp.shop.com.bakeit.ui.StepsActivity;
 import vsp.shop.com.bakeit.util.Constant;
+import vsp.shop.com.bakeit.util.StepClickListener;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailViewHolder>{
 
     Context context;
     List<Ingredient> ingredients;
     List<Step> steps;
-    public DetailAdapter(Context context, List<Ingredient> ingredients, List<Step> steps) {
+    StepClickListener stepClickListener;
+    public DetailAdapter(Context context, List<Ingredient> ingredients, List<Step> steps, StepClickListener stepClickListener) {
         this.context = context;
         this.ingredients = ingredients;
         this.steps = steps;
+        this.stepClickListener = stepClickListener;
     }
     @NonNull
     @Override
@@ -52,9 +51,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             detailViewHolder.stepDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, IngredientActivity.class);
-                    intent.putParcelableArrayListExtra(Constant.INGREDIENTS,  (ArrayList) ingredients);
-                    context.startActivity(intent);
+                   stepClickListener.onIngredientsClickListener(ingredients);
                 }
             });
         } else {
@@ -62,9 +59,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             detailViewHolder.stepDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, StepsActivity.class);
-                    intent.putExtra(Constant.STEP, steps.get(i));
-                    context.startActivity(intent);
+                    stepClickListener.onStepsClickListener(steps, i - 1);
                 }
             });
         }

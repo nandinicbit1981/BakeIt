@@ -14,15 +14,15 @@ import java.util.List;
 
 import vsp.shop.com.bakeit.R;
 import vsp.shop.com.bakeit.model.Recipe;
-import vsp.shop.com.bakeit.util.ClickListener;
+import vsp.shop.com.bakeit.util.RecipeClickListener;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>{
 
     List<Recipe> recipeList;
     Context context;
-    ClickListener clickListener;
+    RecipeClickListener clickListener;
 
-    public RecipeAdapter(List<Recipe> recipes, Context context, ClickListener clickListener) {
+    public RecipeAdapter(List<Recipe> recipes, Context context, RecipeClickListener clickListener) {
         this.context = context;
         this.recipeList = recipes;
         this.clickListener = clickListener;
@@ -42,7 +42,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         holder.recipeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickListener.onClickListener(recipeList.get(position));
+                clickListener.onRecipeClickListener(recipeList.get(position));
             }
         });
     }

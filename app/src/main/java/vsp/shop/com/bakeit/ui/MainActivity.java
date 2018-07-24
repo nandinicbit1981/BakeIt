@@ -21,15 +21,16 @@ import vsp.shop.com.bakeit.model.Recipe;
 import vsp.shop.com.bakeit.network.APIService;
 import vsp.shop.com.bakeit.network.APIUtils;
 import vsp.shop.com.bakeit.network.RetrofitClient;
-import vsp.shop.com.bakeit.util.ClickListener;
 import vsp.shop.com.bakeit.util.Constant;
+import vsp.shop.com.bakeit.util.ExpressoIdlingResource;
+import vsp.shop.com.bakeit.util.RecipeClickListener;
 
 import static vsp.shop.com.bakeit.util.RecipeConstant.BROWNIES;
 import static vsp.shop.com.bakeit.util.RecipeConstant.CHEESECAKE;
 import static vsp.shop.com.bakeit.util.RecipeConstant.NUTELLA;
 import static vsp.shop.com.bakeit.util.RecipeConstant.YELLOWCAKE;
 
-public class MainActivity extends AppCompatActivity implements ClickListener{
+public class MainActivity extends AppCompatActivity implements RecipeClickListener {
 
     private static final String TAG = MainActivity.class.getCanonicalName();
     APIService mApiService;
@@ -65,12 +66,14 @@ public class MainActivity extends AppCompatActivity implements ClickListener{
 
 
         Call<List<Recipe>> response = RetrofitClient.Retrieve().getRecipe();
+        ExpressoIdlingResource.increment();
         response.enqueue(new Callback<List<Recipe>>() {
 
 
             @Override
             public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
                 recipeList = response.body();
+                ExpressoIdlingResource.decrement();
                 for(Recipe recipe : recipeList) {
                     if(recipe.getName().toString().equals(NUTELLA)) {
                         recipe.setImage(String.valueOf(R.drawable.nutella));
@@ -95,8 +98,9 @@ public class MainActivity extends AppCompatActivity implements ClickListener{
     }
 
     @Override
-    public void onClickListener(Recipe recipe) {
+    public void onRecipeClickListener(Recipe recipe) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        intent.putExtra(Constant.RECIPENAME, recipe.getName());
         intent.putParcelableArrayListExtra(Constant.INGREDIENTS, (ArrayList) recipe.getIngredients());
         intent.putParcelableArrayListExtra(Constant.STEPS, (ArrayList) recipe.getSteps());
         startActivity(intent);

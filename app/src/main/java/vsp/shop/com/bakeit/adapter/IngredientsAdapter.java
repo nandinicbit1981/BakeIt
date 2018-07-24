@@ -19,9 +19,11 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     List<Ingredient> ingredients;
     Context context;
 
+
     public IngredientsAdapter(List<Ingredient> ingredients, Context context) {
         this.context = context;
         this.ingredients = ingredients;
+
     }
 
     @NonNull

@@ -52,6 +52,7 @@ public class Ingredient implements Parcelable {
         dest.writeValue(this.mQuantity);
     }
 
+
     public Ingredient() {
     }
 
