@@ -53,6 +53,7 @@ public class DetailActivity extends AppCompatActivity implements StepClickListen
             insertPlayerFragment(0);
         }
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        setTitle(recipeName);
     }
 
     private void insertPlayerFragment(int stepIndex) {
