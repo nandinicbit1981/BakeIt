@@ -22,11 +22,6 @@ import vsp.shop.com.bakeit.util.Constant;
  */
 public class BakeWidget extends AppWidgetProvider {
 
-
-    public static final String ACTION_VIEW_DETAILS =
-            "com.company.android.ACTION_VIEW_DETAILS";
-    public static final String EXTRA_ITEM =
-            "com.company.android.CollectionWidgetProvider.EXTRA_ITEM";
     static List<Ingredient> ingredientsList;
     static String recipe;
 

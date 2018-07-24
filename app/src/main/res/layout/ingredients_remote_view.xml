@@ -9,7 +9,7 @@
         android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ingredients_name_txt_view"
+        android:id="@+id/ingredients_name"
         android:textSize="12sp"
         android:paddingRight="10dp"
         />
@@ -27,6 +27,6 @@
         android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:id="@+id/ingredients_measurements_txt_view"
+        android:id="@+id/ingredients_measurements"
         />
 </LinearLayout>

@@ -101,9 +101,9 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
     // intent here and attach it to the returned view.
     @Override
     public RemoteViews getViewAt(int i) {
-        RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.ingredients_detail_view);
-        rv.setTextViewText(R.id.ingredients_name_txt_view, ingredients.get(i).getIngredient());
-        rv.setTextViewText(R.id.ingredients_measurements_txt_view, ingredients.get(i).getQuantity() + " " +ingredients.get(i).getMeasure());
+        RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.ingredients_remote_view);
+        rv.setTextViewText(R.id.ingredients_name, ingredients.get(i).getIngredient());
+        rv.setTextViewText(R.id.ingredients_measurements, ingredients.get(i).getQuantity() + " " +ingredients.get(i).getMeasure());
         return rv;
 
     }
