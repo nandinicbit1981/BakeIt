@@ -10,6 +10,8 @@
     <TextView
         android:layout_weight="0.3"
         android:id="@+id/ingredient_item"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
         android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

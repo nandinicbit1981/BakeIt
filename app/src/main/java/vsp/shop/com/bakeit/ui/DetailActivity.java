@@ -52,6 +52,7 @@ public class DetailActivity extends AppCompatActivity implements StepClickListen
         if(twoPane && savedInstanceState == null) {
             insertPlayerFragment(0);
         }
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
     }
 
     private void insertPlayerFragment(int stepIndex) {

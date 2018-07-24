@@ -10,5 +10,6 @@ public class StepsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steps);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
     }
 }

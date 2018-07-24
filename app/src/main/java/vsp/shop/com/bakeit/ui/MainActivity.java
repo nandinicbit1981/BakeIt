@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements RecipeClickListen
             recipeRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         }
         getRecipes();
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
 
     }
 
